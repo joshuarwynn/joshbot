@@ -4,6 +4,8 @@
   "description": "A Slackbot called Joshbot.",
   "main": "app/app.js",
   "scripts": {
+    "coverage": "NODE_ENV=test NODE_CONFIG_DIR='app/config' nyc mocha ./app/**/*.test.js",
+    "lint": "eslint .",
     "release": "standard-version",
     "start": "NODE_CONFIG_DIR='app/config' node app/app.js",
     "test": "NODE_ENV=test NODE_CONFIG_DIR='app/config' mocha ./app/**/*.test.js"
@@ -33,6 +35,7 @@
     "eslint-plugin-import": "^2.18.0",
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
-    "standard-version": "^6.0.1"
+    "standard-version": "^6.0.1",
+    "supertest": "^4.0.2"
   }
 }

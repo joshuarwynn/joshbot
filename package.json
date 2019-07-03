@@ -2,9 +2,10 @@
   "name": "joshbot",
   "version": "0.1.0",
   "description": "A Slackbot called Joshbot.",
-  "main": "app/server",
+  "main": "app/app.js",
   "scripts": {
     "release": "standard-version",
+    "start": "NODE_CONFIG_DIR='app/config' node app/app.js",
     "test": "NODE_ENV=test NODE_CONFIG_DIR='app/config' mocha ./app/**/*.test.js"
   },
   "repository": {

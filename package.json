@@ -1,6 +1,6 @@
 {
   "name": "joshbot",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A Slackbot called Joshbot.",
   "main": "app/app.js",
   "scripts": {

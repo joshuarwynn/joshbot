@@ -1,5 +1,14 @@
 {
+  "alphaVantage": {
+    "apiKey": "xxxxxxxxxxxxxxxx",
+    "baseUri": "https://www.alphavantage.co",
+    "queryUri": "https://www.alphavantage.co/query",
+    "timeout": 2200
+  },
   "app": {
     "port": 4390
+  },
+  "slack": {
+    "signingSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   }
 }

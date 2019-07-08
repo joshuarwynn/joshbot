@@ -308,7 +308,7 @@ describe(`[unit] POST /market-quote timeout (over ${avTimeout}ms)`, function () 
   })
 })
 
-describe('[unit] POST /market-quote unknown response from Alpha Vantage API', () => { // eslint-disable-line func-names
+describe('[unit] POST /market-quote unknown response from Alpha Vantage API', () => {
   before(() => {
     // Mock the time so that Slack slash command request repeat attack check is satisfied
     sinon.useFakeTimers({ now: 1558290091000 })
@@ -341,7 +341,7 @@ describe('[unit] POST /market-quote unknown response from Alpha Vantage API', ()
   })
 })
 
-describe('[unit] POST /market-quote error communicating with Alpha Vantage API', () => { // eslint-disable-line func-names
+describe('[unit] POST /market-quote error communicating with Alpha Vantage API', () => {
   before(() => {
     // Mock the time so that Slack slash command request repeat attack check is satisfied
     sinon.useFakeTimers({ now: 1558290091000 })

@@ -3,7 +3,7 @@ const { describe, it } = require('mocha')
 const request = require('supertest')(require('../server'))
 
 describe('[unit] GET /health', () => {
-  it('succeeds (200)', () => {
+  it('Succeeds base case (200)', () => {
     return request
       .get('/health')
       .expect(200)

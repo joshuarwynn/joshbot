@@ -28,6 +28,7 @@ router.use(urlencoded)
 
 // Initialize routes
 router.use(require('./health/health'))
+router.use(require('./market/market'))
 
 app.start = function start() {
   app.listen(port, (error) => {

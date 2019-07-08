@@ -70,7 +70,7 @@ describe('[unit] POST /market-quote Slack slash command request replay attack ca
       .type('form')
       .send(slackRequestPayload)
       .set('X-Slack-Request-Timestamp', '1558290091')
-      .set('X-Slack-Signature', 'v0=855f33caf1152b329651f870595434fae0476c60f616df6fce4d5760bb731dff')
+      .set('X-Slack-Signature', 'v0=a5de1629f331a65e16741632ec71faed8b9e88e83ec9e8c21b7fcd8d57428f20')
       .expect(200)
       .then((res) => {
         expect(res.body).to.be.an('object')
@@ -123,7 +123,7 @@ describe('[unit] POST /market-quote Slack slash command request payload missing 
       .type('form')
       .send(slackRequestPayloadEmptyText)
       .set('X-Slack-Request-Timestamp', '1558290091')
-      .set('X-Slack-Signature', 'v0=7002c35d284d1b15831c5a1d62f538b526799ccc7254d1b035b027216a43aa4d')
+      .set('X-Slack-Signature', 'v0=69bbfccff09113e12d750734da22f2b12a7e8f085ab792d93bead1ff2fd7db4f')
       .expect(200)
       .then((res) => {
         expect(res.body).to.be.an('object')
@@ -153,7 +153,7 @@ describe('[unit] POST /market-quote Slack slash command request payload schema i
       .type('form')
       .send(slackRequestPayloadNewSchema)
       .set('X-Slack-Request-Timestamp', '1558290091')
-      .set('X-Slack-Signature', 'v0=3feaf0f4e9920d92be4b1c7da98162c9eb4007510d1ee9fd74c67fa4e519662d')
+      .set('X-Slack-Signature', 'v0=e46f3df4dc8f271bfff93af400bd4aa2790c683ca8da3fb1f1e700f6a54492a1')
       .expect(200)
       .then((res) => {
         expect(res.body).to.be.an('object')
@@ -186,7 +186,7 @@ describe('[unit] POST /market-quote ticker symbol quote found', () => {
       .type('form')
       .send(slackRequestPayload)
       .set('X-Slack-Request-Timestamp', '1558290091')
-      .set('X-Slack-Signature', 'v0=855f33caf1152b329651f870595434fae0476c60f616df6fce4d5760bb731dff')
+      .set('X-Slack-Signature', 'v0=a5de1629f331a65e16741632ec71faed8b9e88e83ec9e8c21b7fcd8d57428f20')
       .expect(200)
       .then((res) => {
         expect(res.body).to.be.an('object')
@@ -224,7 +224,7 @@ describe('[unit] POST /market-quote ticker symbol quote not found', () => {
       .type('form')
       .send(slackRequestPayloadBadSymbol)
       .set('X-Slack-Request-Timestamp', '1558290091')
-      .set('X-Slack-Signature', 'v0=aefa9475035c327110be7322dfa6bb422f103adbb0969bbd8bc5d95db17df594')
+      .set('X-Slack-Signature', 'v0=5b15765b4dc91a3a9ec05b18001358a192062f14962e54bdbc466b87640c51a3')
       .expect(200)
       .then((res) => {
         expect(res.body).to.be.an('object')
@@ -257,7 +257,7 @@ describe('[unit] POST /market-quote rate limit hit from Alpha Vantage API', () =
       .type('form')
       .send(slackRequestPayload)
       .set('X-Slack-Request-Timestamp', '1558290091')
-      .set('X-Slack-Signature', 'v0=855f33caf1152b329651f870595434fae0476c60f616df6fce4d5760bb731dff')
+      .set('X-Slack-Signature', 'v0=a5de1629f331a65e16741632ec71faed8b9e88e83ec9e8c21b7fcd8d57428f20')
       .expect(200)
       .then((res) => {
         expect(res.body).to.be.an('object')
@@ -298,7 +298,7 @@ describe(`[unit] POST /market-quote timeout (over ${avTimeout}ms)`, function () 
       .type('form')
       .send(slackRequestPayload)
       .set('X-Slack-Request-Timestamp', '1558290091')
-      .set('X-Slack-Signature', 'v0=855f33caf1152b329651f870595434fae0476c60f616df6fce4d5760bb731dff')
+      .set('X-Slack-Signature', 'v0=a5de1629f331a65e16741632ec71faed8b9e88e83ec9e8c21b7fcd8d57428f20')
       .expect(200)
       .then((res) => {
         expect(res.body).to.be.an('object')
@@ -331,7 +331,7 @@ describe('[unit] POST /market-quote unknown response from Alpha Vantage API', ()
       .type('form')
       .send(slackRequestPayload)
       .set('X-Slack-Request-Timestamp', '1558290091')
-      .set('X-Slack-Signature', 'v0=855f33caf1152b329651f870595434fae0476c60f616df6fce4d5760bb731dff')
+      .set('X-Slack-Signature', 'v0=a5de1629f331a65e16741632ec71faed8b9e88e83ec9e8c21b7fcd8d57428f20')
       .expect(200)
       .then((res) => {
         expect(res.body).to.be.an('object')
@@ -364,7 +364,7 @@ describe('[unit] POST /market-quote error communicating with Alpha Vantage API',
       .type('form')
       .send(slackRequestPayload)
       .set('X-Slack-Request-Timestamp', '1558290091')
-      .set('X-Slack-Signature', 'v0=855f33caf1152b329651f870595434fae0476c60f616df6fce4d5760bb731dff')
+      .set('X-Slack-Signature', 'v0=a5de1629f331a65e16741632ec71faed8b9e88e83ec9e8c21b7fcd8d57428f20')
       .expect(200)
       .then((res) => {
         expect(res.body).to.be.an('object')

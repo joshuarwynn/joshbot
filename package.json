@@ -5,7 +5,7 @@
   "main": "app/app.js",
   "type": "module",
   "scripts": {
-    "coverage": "NODE_ENV=test NODE_CONFIG_DIR='app/config' nyc mocha ./app/**/*.test.js",
+    "coverage": "NODE_ENV=test NODE_CONFIG_DIR='app/config' nyc --require esm mocha ./app/**/*.test.js --require esm",
     "lint": "eslint .",
     "release": "standard-version",
     "start": "NODE_CONFIG_DIR='app/config' node --experimental-modules app/app.js",

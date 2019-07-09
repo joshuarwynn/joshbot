@@ -8,6 +8,7 @@
   "rules": {
     "arrow-body-style": ["error", "always"],
     "comma-dangle": ["error", "never"],
+    "import/extensions": ["error", "ignorePackages"],
     "semi": ["error", "never"]
   }
 }

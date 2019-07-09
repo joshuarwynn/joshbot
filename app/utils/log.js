@@ -1,4 +1,4 @@
-const winston = require('winston')
+import winston from 'winston'
 
 const level = process.env.LOG_LEVEL || 'info'
 
@@ -13,4 +13,4 @@ const log = winston.createLogger({
   ]
 })
 
-module.exports = log
+export default log

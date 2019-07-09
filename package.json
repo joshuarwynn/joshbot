@@ -3,12 +3,13 @@
   "version": "0.3.2",
   "description": "A Slackbot called Joshbot.",
   "main": "app/app.js",
+  "type": "module",
   "scripts": {
     "coverage": "NODE_ENV=test NODE_CONFIG_DIR='app/config' nyc mocha ./app/**/*.test.js",
     "lint": "eslint .",
     "release": "standard-version",
-    "start": "NODE_CONFIG_DIR='app/config' node app/app.js",
-    "test": "NODE_ENV=test NODE_CONFIG_DIR='app/config' mocha ./app/**/*.test.js"
+    "start": "NODE_CONFIG_DIR='app/config' node --experimental-modules app/app.js",
+    "test": "NODE_ENV=test NODE_CONFIG_DIR='app/config' mocha ./app/**/*.test.js --require esm"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "eslint": "^6.0.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.18.0",
+    "esm": "^3.2.25",
     "mocha": "^6.1.4",
     "nock": "^10.0.6",
     "nyc": "^14.1.1",

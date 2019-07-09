@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi')
+import Joi from '@hapi/joi'
 
 // Joi schema for an error response from the Alpha Vantage API
 const avErrorSchema = Joi.object().keys({
@@ -29,4 +29,4 @@ const avTimeSeriesDailySchema = Joi.object().keys({
   }))
 })
 
-module.exports = { avErrorSchema, avRateLimitSchema, avTimeSeriesDailySchema }
+export default { avErrorSchema, avRateLimitSchema, avTimeSeriesDailySchema }

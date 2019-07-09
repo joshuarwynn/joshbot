@@ -1,11 +1,11 @@
-const config = require('config')
-const express = require('express')
-const Joi = require('@hapi/joi')
-const request = require('superagent')
-const { isNull } = require('lodash')
-const log = require('./../utils/log')
-const model = require('./market-model')
-const slack = require('./../utils/slack')
+import config from 'config'
+import express from 'express'
+import isNull from 'lodash/isNull.js'
+import Joi from '@hapi/joi'
+import request from 'superagent'
+import log from '../utils/log.js'
+import model from './market-model.js'
+import slack from '../utils/slack.js'
 
 const avApiKey = config.get('alphaVantage.apiKey')
 const avQueryUri = config.get('alphaVantage.queryUri')
@@ -174,4 +174,4 @@ async function marketQuote(req, res) {
 // POST /market-quote
 router.post('/market-quote', slack.validateSlackRequest, slack.validateSlackSchema, marketQuote)
 
-module.exports = router
+export default router

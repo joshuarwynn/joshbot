@@ -1,10 +1,11 @@
-const config = require('config')
-const nock = require('nock')
-const sinon = require('sinon')
-const { expect } = require('chai')
-const { clone } = require('lodash')
-const { describe, it } = require('mocha')
-const request = require('supertest')(require('../server.js'))
+import clone from 'lodash/clone.js'
+import config from 'config'
+import nock from 'nock'
+import request from 'supertest'
+import sinon from 'sinon'
+import { expect } from 'chai'
+import { describe, it } from 'mocha'
+import app from '../server.js'
 
 const avBaseUri = config.get('alphaVantage.baseUri')
 const avTimeout = config.get('alphaVantage.timeout')
@@ -65,7 +66,7 @@ nock.enableNetConnect('127.0.0.1')
 
 describe('[unit] POST /market-quote Slack slash command request replay attack caught', () => {
   it('Catches Slack slash command request replay attack (200)', () => {
-    return request
+    return request(app)
       .post('/market-quote')
       .type('form')
       .send(slackRequestPayload)
@@ -90,7 +91,7 @@ describe('[unit] POST /market-quote Slack slash command request invalid signatur
   })
 
   it('Catches Slack slash command request invalid signature (200)', () => {
-    return request
+    return request(app)
       .post('/market-quote')
       .type('form')
       .send(slackRequestPayload)
@@ -118,7 +119,7 @@ describe('[unit] POST /market-quote Slack slash command request payload missing 
   })
 
   it('Catches Slack slash command request payload with empty text argument(s) (200)', () => {
-    return request
+    return request(app)
       .post('/market-quote')
       .type('form')
       .send(slackRequestPayloadEmptyText)
@@ -148,7 +149,7 @@ describe('[unit] POST /market-quote Slack slash command request payload schema i
   })
 
   it('Catches Slack slash command request payload with an extra field (200)', () => {
-    return request
+    return request(app)
       .post('/market-quote')
       .type('form')
       .send(slackRequestPayloadNewSchema)
@@ -181,7 +182,7 @@ describe('[unit] POST /market-quote ticker symbol quote found', () => {
   })
 
   it('Succeeds base case (200)', () => {
-    return request
+    return request(app)
       .post('/market-quote')
       .type('form')
       .send(slackRequestPayload)
@@ -219,7 +220,7 @@ describe('[unit] POST /market-quote ticker symbol quote not found', () => {
   })
 
   it('Fails ticker symbol not found (200)', () => {
-    return request
+    return request(app)
       .post('/market-quote')
       .type('form')
       .send(slackRequestPayloadBadSymbol)
@@ -252,7 +253,7 @@ describe('[unit] POST /market-quote rate limit hit from Alpha Vantage API', () =
   })
 
   it('Rate limit occurs (200)', () => {
-    return request
+    return request(app)
       .post('/market-quote')
       .type('form')
       .send(slackRequestPayload)
@@ -293,7 +294,7 @@ describe(`[unit] POST /market-quote timeout (over ${avTimeout}ms)`, function () 
   })
 
   it.skip('Timeout occurs (200)', () => {
-    return request
+    return request(app)
       .post('/market-quote')
       .type('form')
       .send(slackRequestPayload)
@@ -326,7 +327,7 @@ describe('[unit] POST /market-quote unknown response from Alpha Vantage API', ()
   })
 
   it('Unknown response occurs (200)', () => {
-    return request
+    return request(app)
       .post('/market-quote')
       .type('form')
       .send(slackRequestPayload)
@@ -359,7 +360,7 @@ describe('[unit] POST /market-quote error communicating with Alpha Vantage API',
   })
 
   it('Communication error (200)', () => {
-    return request
+    return request(app)
       .post('/market-quote')
       .type('form')
       .send(slackRequestPayload)

@@ -1,4 +1,4 @@
-const express = require('express')
+import express from 'express'
 
 const router = express.Router()
 
@@ -17,4 +17,4 @@ function getHealth(req, res) {
 // GET /health
 router.get('/health', getHealth)
 
-module.exports = router
+export default router

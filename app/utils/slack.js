@@ -1,9 +1,10 @@
-const config = require('config')
-const crypto = require('crypto')
-const Joi = require('@hapi/joi')
-const qs = require('qs')
-const { filter, isNull } = require('lodash')
-const log = require('./log')
+import config from 'config'
+import crypto from 'crypto'
+import filter from 'lodash/filter.js'
+import isNull from 'lodash/isNull.js'
+import Joi from '@hapi/joi'
+import qs from 'qs'
+import log from './log.js'
 
 const slackSigningSecret = config.get('slack.signingSecret')
 
@@ -109,4 +110,4 @@ function validateSlackSchema(req, res, next) {
   }
 }
 
-module.exports = { validateSlackRequest, validateSlackSchema }
+export default { validateSlackRequest, validateSlackSchema }

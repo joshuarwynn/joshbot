@@ -1,14 +1,16 @@
-const config = require('config')
-const express = require('express')
-const fs = require('fs')
-const morgan = require('morgan')
-const path = require('path')
-const log = require('./utils/log')
+import config from 'config'
+import express from 'express'
+import morgan from 'morgan'
+import { createWriteStream } from 'fs'
+import { join as pathJoin, resolve as pathResolve } from 'path'
+import healthRoutes from './health/health.js'
+import marketRoutes from './market/market.js'
+import log from './utils/log.js'
 
-const accessLogStream = fs.createWriteStream(
-  path.join(
-    __dirname,
-    (process.env.NODE_ENV !== 'test') ? '../logs/access.log' : '../logs/access.test.log'
+const accessLogStream = createWriteStream(
+  pathJoin(
+    pathResolve(),
+    (process.env.NODE_ENV !== 'test') ? 'logs/access.log' : 'logs/access.test.log'
   ),
   { flags: 'a' }
 )
@@ -27,8 +29,8 @@ app.use(router)
 router.use(urlencoded)
 
 // Initialize routes
-router.use(require('./health/health'))
-router.use(require('./market/market'))
+router.use(healthRoutes)
+router.use(marketRoutes)
 
 app.start = function start() {
   app.listen(port, (error) => {
@@ -40,4 +42,4 @@ app.start = function start() {
   })
 }
 
-module.exports = app
+export default app

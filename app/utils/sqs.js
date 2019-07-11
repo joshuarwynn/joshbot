@@ -9,11 +9,19 @@ const region = config.get('sqs.region')
 const secretAccessKey = config.get('sqs.secretAccessKey')
 
 // SQS createQueue variables
-const delaySeconds = config.get('sqs.createQueue.delaySeconds')
+const createQueueDelaySeconds = config.get('sqs.createQueue.delaySeconds')
 const maximumMessageSize = config.get('sqs.createQueue.maximumMessageSize')
 const messageRetentionPeriod = config.get('sqs.createQueue.messageRetentionPeriod')
 const receiveMessageWaitTimeSeconds = config.get('sqs.createQueue.receiveMessageWaitTimeSeconds')
-const queueVisibilityTimeout = config.get('sqs.createQueue.visibilityTimeout')
+const createQueueVisibilityTimeout = config.get('sqs.createQueue.visibilityTimeout')
+
+// SQS receiveMessage variables
+const waitTimeSeconds = config.get('sqs.receiveMessage.waitTimeSeconds')
+const receiveMessageVisibilityTimeout = config.get('sqs.receiveMessage.visibilityTimeout')
+const maxNumberOfMessages = config.get('sqs.receiveMessage.maxNumberOfMessages')
+
+// SQS sendMessage variables
+const sendMessageDelaySeconds = config.get('sqs.sendMessage.delaySeconds')
 
 // Connect to SQS
 const sqs = new AWS.SQS({
@@ -48,13 +56,73 @@ function createQueue(queueName) {
   return sqs.createQueue({
     QueueName: queueName,
     Attributes: {
-      DelaySeconds: delaySeconds,
+      DelaySeconds: createQueueDelaySeconds,
       MaximumMessageSize: maximumMessageSize,
       MessageRetentionPeriod: messageRetentionPeriod,
       ReceiveMessageWaitTimeSeconds: receiveMessageWaitTimeSeconds,
-      VisibilityTimeout: queueVisibilityTimeout
+      VisibilityTimeout: createQueueVisibilityTimeout
     }
   }).promise()
 }
 
-export default { changeMessageVisibility, createQueue }
+/**
+ * Deletes a queue in SQS
+ * @param  {string} queueUrl SQS queue URL
+ * @return {Promise}
+ */
+function deleteQueue(queueUrl) {
+  return sqs.deleteQueue({
+    QueueUrl: queueUrl
+  }).promise()
+}
+
+/**
+ * Deletes an SQS message
+ * @param  {string} receiptHandle Message receipt handle
+ * @param  {string} queueUrl      SQS queue URL
+ * @return {Promise}
+ */
+function deleteMessage(queueUrl, receiptHandle) {
+  return sqs.deleteMessage({
+    QueueUrl: queueUrl,
+    ReceiptHandle: receiptHandle
+  }).promise()
+}
+
+/**
+ * Receives an SQS message
+ * @param  {string} queueUrl SQS queue URL
+ * @return {Promise}
+ */
+function receiveMessage(queueUrl) {
+  return sqs.receiveMessage({
+    QueueUrl: queueUrl,
+    AttributeNames: ['All'],
+    WaitTimeSeconds: waitTimeSeconds,
+    VisibilityTimeout: receiveMessageVisibilityTimeout,
+    MaxNumberOfMessages: maxNumberOfMessages
+  }).promise()
+}
+
+/**
+ * Sends an SQS message
+ * @param  {Object} payload  JSON message payload
+ * @param  {string} queueUrl SQS queue URL
+ * @return {Promise}
+ */
+function sendMessage(queueUrl, messageBody) {
+  return sqs.sendMessage({
+    MessageBody: JSON.stringify(messageBody),
+    QueueUrl: queueUrl,
+    DelaySeconds: sendMessageDelaySeconds
+  }).promise()
+}
+
+export default {
+  changeMessageVisibility,
+  createQueue,
+  deleteQueue,
+  deleteMessage,
+  receiveMessage,
+  sendMessage
+}

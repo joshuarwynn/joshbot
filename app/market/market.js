@@ -49,11 +49,7 @@ function getMarketQuote(symbol) {
  */
 function validateAvSchema(avResponseBody) {
   // First check for a normal Time Series (Daily) response
-  const avTimeSeriesDailySchemaCheck = Joi.validate(
-    avResponseBody,
-    model.avTimeSeriesDailySchema,
-    { abortEarly: false }
-  )
+  const avTimeSeriesDailySchemaCheck = Joi.validate(avResponseBody, model.avTimeSeriesDailySchema)
 
   if (!isNull(avTimeSeriesDailySchemaCheck.error)) {
     // Check for an error response

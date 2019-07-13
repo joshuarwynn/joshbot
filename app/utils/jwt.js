@@ -26,7 +26,8 @@ function verifyJwt(req, res, next) {
         // so pass control to the next middleware function
         next()
       } else {
-        // Deny access to requestor
+        // The JWT payload does not contain admin access and/or has expired,
+        // so deny access to requestor
         log.info(`While requesting ${req.path}, JWT payload does not contain admin access and/or has expired.`, { details: payload })
         res.status(401).send()
       }
@@ -36,7 +37,8 @@ function verifyJwt(req, res, next) {
       res.status(401).send()
     }
   } else {
-    // Authorization header is missing or Bearer schema is not included
+    // Authorization header is missing or Bearer schema is not included,
+    // so deny access to requestor
     log.info(`While requesting ${req.path}, the authorization header or Bearer schema is missing.`)
     res.status(401).send()
   }

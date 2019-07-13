@@ -37,11 +37,11 @@ async function executeSqsMethod(sqsMethod, res) {
 
     // Log the result and pass through successful SQS method response
     log.info('SQS method execution succeeded.', { details: { method: sqsMethod.methodName, result: sqsMethodResult } })
-    res.status(200).send(sqsMethodResult)
+    res.status(200).send({ success: true, awsResponse: sqsMethodResult })
   } catch (error) {
     // Log the result and pass through unsuccessful SQS method response
     log.info('SQS method execution failed.', { details: { method: sqsMethod.methodName, result: error } })
-    res.status(200).send(error)
+    res.status(200).send({ success: false, awsResponse: error })
   }
 }
 

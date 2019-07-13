@@ -19,21 +19,23 @@ function verifyJwt(req, res, next) {
 
     try {
       const payload = jwt.verify(token, jwtSecretKey)
-      const time = Math.floor(new Date().getTime() / 1000)
 
-      if (payload.admin === true && payload.exp >= time) {
-        // The JWT payload contains admin access is true and hasn't expired,
-        // so pass control to the next middleware function
+      if (payload.admin === true) {
+        // The JWT payload contains admin access, so pass control to the next middleware function
         next()
       } else {
         // The JWT payload does not contain admin access and/or has expired,
         // so deny access to requestor
-        log.info(`While requesting ${req.path}, JWT payload does not contain admin access and/or has expired.`, { details: payload })
+        log.info(`While requesting ${req.path}, JWT payload does not contain admin access.`, { details: payload })
         res.status(401).send()
       }
     } catch (error) {
       // The JWT could not be verified, so deny access to requestor
-      log.info(`While requesting ${req.path}, JWT could not be verified.`)
+      if (error.name === 'TokenExpiredError') {
+        log.info(`While requesting ${req.path}, JWT was determined to be expired.`)
+      } else {
+        log.info(`While requesting ${req.path}, JWT could not be verified.`)
+      }
       res.status(401).send()
     }
   } else {

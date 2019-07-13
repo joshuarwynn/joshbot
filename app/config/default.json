@@ -7,7 +7,32 @@
   "app": {
     "port": 4390
   },
+  "jwt": {
+    "secretKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
   "slack": {
     "signingSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  "sqs": {
+    "accessKeyId": "key",
+    "apiVersion": "2012-11-05",
+    "endpoint": "http://localhost:9324",
+    "region": "us-west-1",
+    "secretAccessKey": "secret",
+    "createQueue": {
+      "delaySeconds": "0",
+      "maximumMessageSize": "262144",
+      "messageRetentionPeriod": "345600",
+      "receiveMessageWaitTimeSeconds": "0",
+      "visibilityTimeout": "30"
+    },
+    "receiveMessage": {
+      "waitTimeSeconds": 1,
+      "visibilityTimeout": 5,
+      "maxNumberOfMessages": 10
+    },
+    "sendMessage": {
+      "delaySeconds": 1
+    }
   }
 }

@@ -1,11 +1,12 @@
 {
   "name": "joshbot",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "description": "A Slackbot called Joshbot.",
   "main": "app/app.js",
   "type": "module",
   "scripts": {
     "coverage": "NODE_ENV=test NODE_CONFIG_DIR='app/config' nyc --require esm mocha ./app/**/*.test.js --require esm",
+    "generate-jwt": "node --experimental-modules bin/generate-jwt.js",
     "lint": "eslint .",
     "release": "standard-version",
     "start": "NODE_CONFIG_DIR='app/config' node --experimental-modules app/app.js",
@@ -23,8 +24,10 @@
   "homepage": "https://github.com/joshuarwynn/joshbot#readme",
   "dependencies": {
     "@hapi/joi": "^15.1.0",
+    "aws-sdk": "^2.490.0",
     "config": "^3.1.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.11",
     "morgan": "^1.9.1",
     "qs": "^6.7.0",

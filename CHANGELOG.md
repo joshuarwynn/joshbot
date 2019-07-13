@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.4.0 (2019-07-13)
+
+
+### Features
+
+* **issue7-sqs-endpoints:** Adding SQS admin endpoints for change message visibility and create queue. ([2bbb6fd](https://github.com/joshuarwynn/joshbot/commit/2bbb6fd))
+* **issue7-sqs-endpoints:** Adding SQS admin endpoints for send/receive/delete message and delete queue. ([cfedc9e](https://github.com/joshuarwynn/joshbot/commit/cfedc9e))
+
+
+### Tests
+
+* **issue7-sqs-endpoints:** Adding authorization and payload validation unit test coverage for admin endpoints. ([56252f5](https://github.com/joshuarwynn/joshbot/commit/56252f5))
+
+
+
 ### [0.3.4](https://github.com/joshuarwynn/joshbot/compare/v0.3.3...v0.3.4) (2019-07-09)
 
 

@@ -7,6 +7,9 @@
   "app": {
     "port": 4390
   },
+  "jwt": {
+    "secretKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
   "slack": {
     "signingSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   },

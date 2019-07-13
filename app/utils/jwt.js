@@ -7,8 +7,8 @@ const jwtSecretKey = config.get('jwt.secretKey')
 
 /**
  * Verifies that a JWT is valid and its payload contents
- * @param  {Request}   req
- * @param  {Response}   res
+ * @param  {Request} req
+ * @param  {Response} res
  * @param  {Function} next
  * @return {Object}
  */

@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.5.0 (2019-07-14)
+
+
+### Features
+
+* **issue8-retry-queue:** Adding retry queue and poller for unprocessed Slack slash command requests. ([850b125](https://github.com/joshuarwynn/joshbot/commit/850b125))
+
+
+
 ### 0.4.1 (2019-07-13)
 
 

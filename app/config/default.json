@@ -5,7 +5,10 @@
     "timeout": 2200
   },
   "app": {
-    "port": 4390
+    "port": 4390,
+    "processRetryQueueInterval": 20000,
+    "sqsMessageVisibilityTimeout": 60,
+    "sqsQueueUrl": "http://localhost:9324/queue/joshbot"
   },
   "jwt": {
     "secretKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

@@ -7,7 +7,8 @@ Inside `./config` there are two configuration files. `default.json` is used for 
 These configuration files allow you to tweak the parameters for Joshbot application operation and its dependencies.
 
 `default.json` file contents:
-```
+
+```javascript
 {
   "alphaVantage": {
     "apiKey": "xxxxxxxxxxxxxxxx",
@@ -53,7 +54,8 @@ These configuration files allow you to tweak the parameters for Joshbot applicat
 _Note: `alphaVantage.apiKey`, `jwt.secretKey`, and `slack.signingSecret` will need to be populated with real values in order for proper operation of Joshbot._
 
 `test.json` file contents:
-```
+
+```javascript
 {
   "alphaVantage": {
     "apiKey": "testtesttesttest",

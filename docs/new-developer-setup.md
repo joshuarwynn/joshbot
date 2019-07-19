@@ -34,11 +34,11 @@ Grab the most current version of the AWS CLI. Follow the AWS [installation and c
 
 3) Configure your Slack App slash command (i.e. `/marketquote`) and add a temporary `Request URL`. If you've already started up ngrok, use your `Forwarding` URL with the `/market-quote` route included (for example `https://8fc0e0dd.ngrok.io/market-quote`).
 
-TODO: Place instructional image here.
+![Create Slack Slash Command](https://joshbot-documentation.s3-us-west-1.amazonaws.com/slack-create-slash-command.png "Create Slack Slash Command")
 
 4) Grab the `Signing Secret` from the `Basic Information` section under `Settings` within your newly created [Slack App](https://api.slack.com/apps).
 
-TODO: Place instructional image here.
+![Slack Signing Secret](https://joshbot-documentation.s3-us-west-1.amazonaws.com/slack-signing-secret.png "Slack Signing Secret")
 
 ## Joshbot Installation
 
@@ -135,7 +135,7 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
 ```
 _Note: you will need to make this change to your [Slack App](https://api.slack.com/apps) `Slash Commands` configuration each time you restart [ngrok](https://ngrok.com/). The forwarding URL will change each time you restart or it will expire after 8 hours._
 
-TODO: Place instructional image here.
+![Edit Slack Slash Command](https://joshbot-documentation.s3-us-west-1.amazonaws.com/slack-edit-slash-command.png "Edit Slack Slash Command")
 
 4) Initialize the Joshbot [Node.js](https://nodejs.org/) service:
 
@@ -146,6 +146,8 @@ $ npm start
 
 5) Execute your Slack slash command inside your Slack account to get a market quote:
 
-TODO: Place instructional image here.
+![Slack /marketquote Slash Command](https://joshbot-documentation.s3-us-west-1.amazonaws.com/slack-marketquote-slash-command.png "Slack /marketquote Slash Command")
+
+![Slack /marketquote Slash Command Response](https://joshbot-documentation.s3-us-west-1.amazonaws.com/slack-marketquote-slash-command-response.png "Slack /marketquote Slash Command Response")
 
 Cheers :beers: if your favorite security is on the rise! Hang in there if it isn't :relaxed:.

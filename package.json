@@ -24,7 +24,7 @@
   "homepage": "https://github.com/joshuarwynn/joshbot#readme",
   "dependencies": {
     "@hapi/joi": "^15.1.0",
-    "aws-sdk": "^2.494.0",
+    "aws-sdk": "^2.814.0",
     "config": "^3.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
